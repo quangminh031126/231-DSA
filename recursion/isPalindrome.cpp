@@ -1,16 +1,14 @@
 #include "../library.h"
 bool isPalindromeHelper(string &str, int start, int end)
 {
-    while (str[start] == ' ')
-    {
-        start++;
-    }
-    while (str[end] == ' ')
-    {
-        end--;
-    }
     if (start >= end)
         return true;
+    if (str[start] == ' ')
+        return isPalindromeHelper(str, start + 1, end);
+
+    if (str[end] == ' ')
+        return isPalindromeHelper(str, start, end - 1);
+
     if (str[start] == str[end])
         return isPalindromeHelper(str, start + 1, end - 1);
     return false;
